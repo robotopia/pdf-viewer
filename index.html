@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body style="margin:0px;padding:0px;overflow:hidden">
+    <script>
+      const newSrc = async () => {
+        let reader = new FileReader();
+        reader.onload = (e) => {
+          const buffer = e.target.result;
+          const fileBlob = new Blob([new Uint8Array(buffer)], {
+            type: 'application/pdf',
+          });
+
+          const fileURL = window.URL.createObjectURL(fileBlob)
+          document.getElementById("pdf-js-viewer").src=`/web/viewer.html?file=${fileURL}`;
+        };
+
+        let uploader = document.getElementById('upload');
+        uploader.click()
+        uploader.addEventListener('change', () => {
+          console.log(uploader.files)
+          const [file] = uploader.files;
+          reader.readAsArrayBuffer(file);
+        })
+      }
+    </script>
+    <button style="position: absolute; right:0;" onclick="newSrc()">Open</button>
+    <input 
+      type="file"
+      id="upload"
+      style="display:none"
+      accept="application/pdf">
+    <iframe 
+      id="pdf-js-viewer"
+      src="/web/viewer.html"
+      title="webviewer"
+      frameborder="0"
+      style="overflow:hidden;height:100vh;width:100vw;"
+      height="100%"
+      width="100%"
+    ></iframe>
+  </body>
+</html>
