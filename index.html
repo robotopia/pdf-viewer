@@ -19,13 +19,12 @@
         let uploader = document.getElementById('upload');
         uploader.click()
         uploader.addEventListener('change', () => {
-          console.log(uploader.files)
           const [file] = uploader.files;
           reader.readAsArrayBuffer(file);
         })
       }
     </script>
-    <button style="position: absolute; right:0;" onclick="newSrc()">Open</button>
+    <button style="position: absolute; right:2px; top:5px;" onclick="newSrc()">Open</button>
     <input 
       type="file"
       id="upload"

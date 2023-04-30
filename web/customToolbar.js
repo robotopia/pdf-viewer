@@ -27,7 +27,7 @@ let sheet = (function() {
   addElemFromSecondaryToPrimary('next', 'toolbarViewerMiddle')
   
   //adding elements to right part of toolbar
-  addElemFromSecondaryToPrimary('secondaryOpenFile', 'toolbarViewerRight')
+  // addElemFromSecondaryToPrimary('secondaryOpenFile', 'toolbarViewerRight')
   
   /* Hiding elements */
   removeElement('secondaryToolbarToggle')

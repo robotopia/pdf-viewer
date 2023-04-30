@@ -7740,6 +7740,7 @@ class PDFSidebarResizer {
     this.outerContainer = options.outerContainer;
     this.resizer = options.resizer;
     this.eventBus = eventBus;
+    this.mainContainer = document.getElementById("viewerContainer");
     l10n.getDirection().then(dir => {
       this.isRTL = dir === "rtl";
     });
@@ -7760,6 +7761,10 @@ class PDFSidebarResizer {
       return false;
     }
     this._width = width;
+
+    // set the left margin
+    this.mainContainer.style.marginLeft = `${this._width || SIDEBAR_MIN_WIDTH}px`
+
     _ui_utils.docStyle.setProperty(SIDEBAR_WIDTH_VAR, `${width}px`);
     return true;
   }
@@ -7792,6 +7797,8 @@ class PDFSidebarResizer {
       window.addEventListener("mouseup", _boundEvents.mouseUp);
     });
     this.eventBus._on("sidebarviewchanged", evt => {
+      // set the left margin
+      this.mainContainer.style.marginLeft = `${this._width || SIDEBAR_MIN_WIDTH}px`
       this.sidebarOpen = !!evt?.view;
     });
     this.eventBus._on("resize", evt => {
