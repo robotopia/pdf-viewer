@@ -21,6 +21,7 @@
         uploader.addEventListener('change', () => {
           const [file] = uploader.files;
           reader.readAsArrayBuffer(file);
+          document.title = file.name;
         })
       }
     </script>
