@@ -8142,6 +8142,7 @@ class PDFThumbnailView {
     const borderAdjustment = 2 * THUMBNAIL_CANVAS_BORDER_WIDTH;
     ring.style.width = this.canvasWidth + borderAdjustment + "px";
     ring.style.height = this.canvasHeight + borderAdjustment + "px";
+    ring.style.position = 'relative';
     this.ring = ring;
     div.append(ring);
     anchor.append(div);
@@ -8168,6 +8169,13 @@ class PDFThumbnailView {
     this.div.removeAttribute("data-loaded");
     const ring = this.ring;
     ring.textContent = "";
+
+    // add page label
+    const label = document.createElement("span");
+    label.className = "thumbnail-label";
+    label.innerText = `Page ${this.id}`;
+    this.ring.append(label);
+
     const borderAdjustment = 2 * THUMBNAIL_CANVAS_BORDER_WIDTH;
     ring.style.width = this.canvasWidth + borderAdjustment + "px";
     ring.style.height = this.canvasHeight + borderAdjustment + "px";
