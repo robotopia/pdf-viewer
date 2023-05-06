@@ -4,6 +4,14 @@
   </head>
   <body style="margin:0px;padding:0px;overflow:hidden">
     <script>
+      const toggleFullScreen = () => {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+        } else if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+
       const newSrc = async () => {
         let reader = new FileReader();
         reader.onload = (e) => {
@@ -25,6 +33,7 @@
         })
       }
     </script>
+    <button style="position: absolute; right:55px; top:5px;" onclick="toggleFullScreen()">Fullscreen</button>
     <button style="position: absolute; right:2px; top:5px;" onclick="newSrc()">Open</button>
     <input 
       type="file"
