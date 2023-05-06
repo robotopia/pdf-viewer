@@ -2399,8 +2399,10 @@ a:focus > .thumbnail > .thumbnailSelectionRing,
   left: 50%;
   transform: translate(-50%, -50%);
   color: black;
-  text-shadow: 1px 1px 10px #000;
   z-index: 999;
+  font-size: 50pt;
+  text-shadow: 4px 0 #fff, -4px 0 #fff, 0 4px #fff, 0 -4px #fff, 2px 2px #fff, -2px -2px #fff, 2px -2px #fff, -2px 2px #fff;
+  pointer-events: none;
 }
 
 .treeWithDeepNesting > .treeItem,

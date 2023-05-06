@@ -8173,7 +8173,7 @@ class PDFThumbnailView {
     // add page label
     const label = document.createElement("span");
     label.className = "thumbnail-label";
-    label.innerText = `Page ${this.id}`;
+    label.innerText = `${this.id}`;
     this.ring.append(label);
 
     const borderAdjustment = 2 * THUMBNAIL_CANVAS_BORDER_WIDTH;
