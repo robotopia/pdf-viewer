@@ -1117,7 +1117,7 @@
   --inline-start: left;
   --inline-end: right;
 
-  --sidebar-width: 200px;
+  --sidebar-width: 100%;
   --sidebar-transition-duration: 200ms;
   --sidebar-transition-timing-function: ease;
 
@@ -1367,7 +1367,7 @@ body {
 
 #sidebarContainer {
   position: absolute;
-  inset-block: 32px 0;
+  inset-block: calc(100% - 200px) 0;
   inset-inline-start: calc(-1 * var(--sidebar-width));
   width: var(--sidebar-width);
   visibility: hidden;
@@ -1464,7 +1464,7 @@ body {
   position: absolute;
   inset-block: 0;
   inset-inline-end: -6px;
-  width: 6px;
+  width: 0px;
   z-index: 200;
   cursor: ew-resize;
 }
@@ -2321,18 +2321,20 @@ a.secondaryToolbarButton[href="#"] {
 #outlineView,
 #attachmentsView,
 #layersView {
+  display: block;
   position: absolute;
   width: calc(100% - 8px);
   inset-block: 0;
   padding: 4px 4px 0;
-  overflow: auto;
+  overflow: auto hidden;
+  white-space: nowrap;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
 }
 #thumbnailView {
-  width: calc(100% - 60px);
-  padding: 10px 30px 0;
+  width: calc(100% - 10px);
+  padding: 10px 5px 0;
 }
 
 #thumbnailView > a:active,
@@ -2341,7 +2343,9 @@ a.secondaryToolbarButton[href="#"] {
 }
 
 .thumbnail {
-  float: var(--inline-start);
+  /*float: var(--inline-start);*/
+  display: inline-block;
+  white-space: nowrap;
   margin: 0 10px 5px;
 }
 
@@ -2350,6 +2354,9 @@ a.secondaryToolbarButton[href="#"] {
 }
 #thumbnailView > a:last-of-type > .thumbnail:not([data-loaded]) {
   margin-bottom: 9px;
+}
+#thumbnail .thumbnail {
+  white-space: nowrap;
 }
 
 .thumbnail:not([data-loaded]) {
